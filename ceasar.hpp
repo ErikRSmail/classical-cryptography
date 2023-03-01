@@ -3,10 +3,9 @@
 [describe cipher]
 */
 #include <string>
-#include "affine.hpp"
+#include "shift.hpp"
 
-class ceasar : public affine{
+class ceasar : public shift{
 public:
-    std::string encrypt(const std::string& plaintext) override;
-    std::string decrypt(const std::string& ciphertext) override;
+    ceasar() : shift(3){}
 };

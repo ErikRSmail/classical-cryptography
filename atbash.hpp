@@ -7,8 +7,5 @@
 
 class atbash : public affine{
 public:
-    std::string encrypt(const std::string& plaintext) override;
-    std::string decrypt(const std::string& ciphertext) override;
-
-    
+    atbash() : affine(-1,0){}
 };
