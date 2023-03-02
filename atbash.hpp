@@ -7,5 +7,5 @@
 
 class atbash : public affine{
 public:
-    atbash() : affine(-1,0){}
+    atbash() : affine(25,0){}
 };

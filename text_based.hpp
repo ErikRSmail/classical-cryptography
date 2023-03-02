@@ -29,7 +29,7 @@ bool text_based::is_alphabetic(const char& c){
 
 bool text_based::is_valid(const std::string& plaintext){
     for(const char& c : plaintext){
-        if(!is_alphabetic(c) || c != 32 ){//32 is space in ascii 
+        if(!is_alphabetic(c) && c != 32 ){//32 is space in ascii 
             return false;
         }
     }
@@ -48,11 +48,12 @@ std::string text_based::format_plaintext(const std::string& plaintext){
     }
     return str;
 }
-
+/*
 std::string text_based::format_ciphertext(const std::string& ciphertext){
     std::string str;
     for(const char& c: ciphertext){
-        str.push_back(c+32);//this maps uppercase ascii to lowercase ascii
+        str.push_back(c-32);//this maps lowercase ascii to uppercase ascii
     }
     return str;
-}
+}//TODO should probably assert we are in allcaps, and insert spaces every 5 chars
+*/
