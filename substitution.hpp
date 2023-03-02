@@ -30,22 +30,22 @@ private:
 - make sure all values are uppercase.
 - make sure we have 26 key/value pairs.
 - make sure we have no duplicate keys or values. */
-bool substitution::is_valid(const std::map<char,char>& subs){
+bool substitution::is_valid(const std::map<char,char>& subs){//TODO have not tested this thoroughly
     if(subs.size() != 26){return false;}
     std::forward_list<char> keys_so_far;
     std::forward_list<char> vals_so_far;
     for(const auto& [key, value] : subs){
-        if( !(key <=122 && key >= 97) //key is NOT ascii lowercase
-        ||  !(value <=90 && value >= 65) //or value is NOT ascii uppercase
-        ||   (std::find(keys_so_far.begin(), keys_so_far.end(), key) != keys_so_far.end())//or we have alduplicate key
-        ||   (std::find(vals_so_far.begin(), vals_so_far.end(), value) != vals_so_far.end())//or we have alduplicate value
+        if( !(key <=122 && key >= 97) //key is NOT ascii lowercase//ugly. should add is_lowercase to text_based
+        ||  !(value <=90 && value >= 65) //or value is NOT ascii uppercase//ugly. should add is_uppercase to text_based
+        ||   (std::find(keys_so_far.begin(), keys_so_far.end(), key) != keys_so_far.end())//or we have a duplicate key
+        ||   (std::find(vals_so_far.begin(), vals_so_far.end(), value) != vals_so_far.end())//or we have a duplicate value
         ){
             return false;
         }
         keys_so_far.push_front(key);
         vals_so_far.push_front(value);
     }
-    return true;//TODO have not tested this thoroughly
+    return true;
 }
 substitution::substitution(const std::map<char,char>& subs){
     assert(is_valid(subs));
