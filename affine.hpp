@@ -53,7 +53,7 @@ std::string affine::encrypt(const std::string& plaintext){
     return str;
 }
 
-std::string affine::decrypt(const std::string& ciphertext){//TODO implement
+std::string affine::decrypt(const std::string& ciphertext){
     std::string str; 
     for(const char& c : ciphertext){
         str.push_back(decrypt(c));
