@@ -4,41 +4,54 @@
 ax+b mod 26
 */
 #include <string>
-#include "text_cipher.hpp"
+#include <map>
+#include "cipher.hpp"
+#include "text_based.hpp"
 
-class affine : public text_cipher{
+class affine : public cipher, public text_based{
 public:
     std::string encrypt(const std::string& plaintext) override;
     std::string decrypt(const std::string& ciphertext) override;
-    affine(int a, int b) : a(a), b(b) {}//TODO need to redo this to check we have valid keys. 
+    affine(int a_in, int b_in);
 private:
-    int a, b;
-
-    char encrypt(const char& plaintext);
-    char decrypt(const char& plaintext);
+    int a, b, a_inverse;
+    char encrypt(const char& pt);
+    char decrypt(const char& ct);
+    std::map<int, int> inverse{{1,1},{3,9},{5,21},{7,15},{9,3},{11,19},{15,7},{17,23},{19,11},{21,5},{23,17},{25,25}}; //multiplicative inverses mod 26
 };
+affine::affine(int a_in, int b_in){
+        a = a_in;
+        b = b_in;
+        a_inverse = inverse[a];
+    }//TODO need to redo this to check we have valid keys. also, 
+char affine::encrypt(const char& pt){
+    int ct = pt-97;//maps a-z to 0-25
+    ct = (ct*a + b) % 26;//apply encryption
+    ct += 97; //remap to ascii range
+    return char(ct);
+}
+
+char affine::decrypt(const char& ct){//y=ax+b mod 26=> x = (y-b)*a^-1 mod 26
+    int pt = ct-97;//maps a-z to 0-25
+    if(pt < b){pt = pt + 26 -b;}
+    else{pt -=b;}
+    pt = (pt*a_inverse)%26;
+    pt += 97; //remap to ascii range
+    return char(pt);
+}
 
 std::string affine::encrypt(const std::string& plaintext){
-    if(!is_valid(plaintext)){}//TODO figure out error handling later
-    std::string pt = format_plaintext(plaintext);
-    std::string ct;
+    std::string str; 
     for(const char& c : plaintext){
-        ct.push_back(encrypt(c));
+        str.push_back(encrypt(c));
     }
-    return format_ciphertext(ct);
+    return str;
 }
-//TODO just a shift cipher. must finish implementation
-char affine::encrypt(const char& plaintext){//we have a (sort of..) guarantee pt is in [97..122]
-    if(plaintext + b > 122){//if we "overflow the alphabet"
-        return plaintext - 26 + b;//then loop back around
-    }
-    else{
-        return plaintext + b;
-    }
-}
+
 std::string affine::decrypt(const std::string& ciphertext){//TODO implement
-    return "placeholder";
-}
-char affine::decrypt(const char& plaintext){//TODO implement
-    return '0';
+    std::string str; 
+    for(const char& c : ciphertext){
+        str.push_back(decrypt(c));
+    }
+    return str;
 }
