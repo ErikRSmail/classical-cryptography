@@ -20,15 +20,16 @@ if you want to use an affine cipher, which just encrypts a message one plaintext
 
 ###### actual ex:
 
-`#include <string>
-#include <iostream>
-#include affine
-
+`#include <string>`
+`#include <iostream>`
+`#include affine`
+`
 int main(){
-    affine A(3,2);
 
+    affine A(3,2);
     std::string plaintext = "Wow what a good plaintext";
     std::string ciphertext = A.encrypt(plaintext);//tada, that's it
-}`
+}
+`
 
 Note that encrypt will reject messages composed of anything other than alphabetic characters and spaces. Also, the functions are not true inverses since cipher.encrypt does not preserve capitalization or spaces. 
