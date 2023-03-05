@@ -19,7 +19,7 @@ protected:
     bool is_valid_key(const std::string& key);
     std::string format_key(const std::string& key);
     virtual std::string encrypt_implementation(const std::string& plaintext)=0;
-    virtual std::string decrypt_implementation(const std::string& plaintext)=0;
+    virtual std::string decrypt_implementation(const std::string& ciphertext)=0;
 private:
     bool is_lowercase(const char& c);
     bool is_uppercase(const char& c);

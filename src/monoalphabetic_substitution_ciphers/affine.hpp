@@ -5,9 +5,9 @@ ax+b mod 26
 */
 #include <map>
 #include <algorithm>
+#include <vector>
 #include "assert.h"
 #include "monoalphabetic_substitution.hpp"
-#include <vector>
 
 class affine : public monoalphabetic_substitution{
 public:
