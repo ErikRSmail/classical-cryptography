@@ -93,11 +93,11 @@ std::string cipher::format_key(const std::string& key){
 }
 std::string cipher::encrypt(const std::string& plaintext){
     assert(is_valid_plaintext(plaintext));
-    return encrypt_implementation(format_plaintext(plaintext));
+    return format_ciphertext(encrypt_implementation(format_plaintext(plaintext)));
 }
 std::string cipher::decrypt(const std::string& ciphertext){
     assert(is_valid_ciphertext(ciphertext));
-    return decrypt_implementation(format_ciphertext(ciphertext));
+    return format_plaintext(decrypt_implementation(ciphertext));
 }
 /*
 So I want every encryption/decryption function to validate and format input, then do its own
