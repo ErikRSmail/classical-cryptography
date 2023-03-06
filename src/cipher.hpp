@@ -39,12 +39,12 @@ bool cipher::is_uppercase(const char& c){
     else{return false;}
 }
 bool cipher::is_punctuation(const char& c){//bad name because this also checks if c is a space, 32 in ascii.
-        if((c>=32 && c<=47) || (c>=58 && c<=64) || (c>=91 && c<=96) || (c>=123 && c<=126)){
-            return true;
-        }
-        else{
-            return false;
-        }
+    if((c>=32 && c<=47) || (c>=58 && c<=64) || (c>=91 && c<=96) || (c>=123 && c<=126)){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 bool cipher::is_valid_plaintext(const char& c){//yes, this could be much more efficient if we just checked ascii 32-126 sans the numbers.
     if(is_lowercase(c) || is_uppercase(c) || is_punctuation(c)){return true;}
