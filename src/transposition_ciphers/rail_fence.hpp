@@ -17,6 +17,7 @@ private:
     std::string decrypt_implementation(const std::string& ciphertext);
 };
 rail_fence::rail_fence(int key){
+    assert(key>1);
     period=2*(key-1);
     n=key;
 }
