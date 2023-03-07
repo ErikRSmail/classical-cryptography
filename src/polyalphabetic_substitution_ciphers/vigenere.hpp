@@ -2,6 +2,7 @@
 
 #include <string>
 #include <vector>
+#include "assert.h"
 #include "../cipher.hpp"
 #include "../monoalphabetic_substitution_ciphers/shift.hpp"
 
@@ -13,9 +14,11 @@ private:
     std::string encrypt_implementation(const std::string& plaintext);
     std::string decrypt_implementation(const std::string& plaintext);
 };
-vigenere::vigenere(const std::string& key){//TODO go back to cipher.hpp and split format_key up. vigenere ciphers accept repeating chars
+vigenere::vigenere(const std::string& key){
+    assert(is_valid_key(key));//guarantees our key has no numbers or unprintable chars.
     for(const char& c : key){
-        shifts.push_back(shift(c-97));
+        if(c>=97 && c<=122){shifts.push_back(shift(c-97));}
+        else if(c>=65 && c<=90){shifts.push_back(shift(c-65));}
     }
 }
 std::string vigenere::encrypt_implementation(const std::string& plaintext){
