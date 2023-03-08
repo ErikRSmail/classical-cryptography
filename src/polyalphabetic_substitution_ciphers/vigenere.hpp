@@ -12,7 +12,7 @@ public:
 private:
     std::vector<shift> shifts;
     std::string encrypt_implementation(const std::string& plaintext);
-    std::string decrypt_implementation(const std::string& plaintext);
+    std::string decrypt_implementation(const std::string& ciphertext);
 };
 vigenere::vigenere(const std::string& key){
     assert(is_valid_key(key));//guarantees our key has no numbers or unprintable chars.

@@ -14,7 +14,7 @@ public:
     monoalphabetic_substitution(const std::map<char,char>& subs);
 protected:
     virtual std::string encrypt_implementation(const std::string& plaintext) final;
-    virtual std::string decrypt_implementation(const std::string& plaintext) final;
+    virtual std::string decrypt_implementation(const std::string& ciphertext) final;
 private:
     std::map<char,char> substitutions;
     std::map<char,char> substitutions_inverse;
