@@ -21,7 +21,7 @@ int main(){
 }
 ```
 ## What ciphers do you plan to implement?
-Almost all non-mechanical, non-modern ciphers.
+Most historically significant non-mechanical, non-modern ciphers.
 ###  Specifically
 - Monoalphabetic Substitution Ciphers
 - - Random 
