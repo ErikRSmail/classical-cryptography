@@ -5,7 +5,7 @@
 #include <string>
 #include "multiplicative.hpp"
 
-class atbash : public multiplicative{
+class atbash : public affine{
 public:
-    atbash() : multiplicative(25){}
+    atbash() : affine(25,25){}
 };
