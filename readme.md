@@ -20,8 +20,9 @@ int main(){
 	std::string ciphertext = A.cipher::encrypt(plaintext);
 }
 ```
-## What ciphers do you plan to implement?
+## What ciphers are implemented?
 Most historically significant non-mechanical, non-modern ciphers.
+In the list below, strikethroughs indicate the cipher is not yet implemented.
 ###  Specifically
 - Monoalphabetic Substitution Ciphers
 - - Random 
@@ -35,19 +36,18 @@ Most historically significant non-mechanical, non-modern ciphers.
 - - - - Atbash
 - Polyalphabetic Ciphers
 - - Vigenere (key-autokey)
-- - text-autokey (by vigenere)
+- - Text-autokey (by Vigenere)
 - - Trithemius
 - Polygraphic Ciphers
-- - Playfair
-- - Two Square
-- - Four Square
-- - Hill
+- - ~~Playfair~~
+- - ~~Two Square~~
+- - ~~Four Square~~
+- - ~~Hill~~
 - Transposition
-- - Simple Columnar
-- - Keyed Columnar
+- - Keyword Columnar
 - - Rail Fence
 - Other
-- - ADFGX
+- - ~~ADFGX~~
 
 This list is not finalized, but I don't forsee expanding it by anything more than a couple ciphers that I can't recall at the moment.
 ## Misc
